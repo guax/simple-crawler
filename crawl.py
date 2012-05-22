@@ -183,7 +183,7 @@ class SimpleCrawler:
     def start(self):
         print "Crawler started"
         
-        while len(self.crawl_queue) > 0:
+        while len(self.pagesKept) < 5 and len(self.crawl_queue) > 0:
             self.__crawlNext()
         
         self.__printTitle("Finished crawl process")
@@ -199,7 +199,7 @@ if __name__ ==  "__main__":
 
     (options, args) = parser.parse_args()
 
-    crawler = SimpleCrawler("http://g1.globo.com/economia/", G1BovespaParser())
+    crawler = SimpleCrawler("http://g1.globo.com/economia/mercados/noticia/2012/05/dolar-encerra-em-alta-com-maior-valor-desde-maio-de-2009.html", G1BovespaParser())
 
     if options.verbose or options.delayed:
         crawler.setVerbose()
